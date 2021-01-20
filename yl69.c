@@ -20,15 +20,12 @@ static const adc_atten_t attenuation = ADC_ATTEN_DB_11;
 
 void yl69_setup(adc1_channel_t _channel) {
     channel = _channel;
-
     //Configure ADC
     adc1_config_width(ADC_WIDTH_BIT_12);
     adc1_config_channel_atten(channel, attenuation);
-
     //Characterize ADC
     adc_chars = calloc(1, sizeof(esp_adc_cal_characteristics_t));
-    esp_adc_cal_value_t val_type = esp_adc_cal_characterize(unit, attenuation, ADC_WIDTH_BIT_12, DEFAULT_VREF, adc_chars);
-    // print_char_val_type(val_type);
+    esp_adc_cal_characterize(unit, attenuation, ADC_WIDTH_BIT_12, DEFAULT_VREF, adc_chars);
 }
 
 uint32_t yl69_read() {
@@ -39,6 +36,10 @@ uint32_t yl69_read() {
     }
     adc_reading /= NO_OF_SAMPLES;
     //Convert adc_reading to voltage in mV
-    uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
-    return voltage;
+    // uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
+    return adc_reading;
+}
+
+uint32_t yl69_normalization(uint32_t value_t) {
+    return (value_t * 100) / VALUE_MAX;
 }
