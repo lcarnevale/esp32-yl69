@@ -1,5 +1,5 @@
 /*
- * ESP32 Soil Moisture Sensor YL-69 or HL-69 API
+ * ESP32 Soil Moisture Sensor YL-69 or HL-69 Driver
  * Copyright (c) 2021, Lorenzo Carnevale <lcarnevale@unime.it>
  */
 
