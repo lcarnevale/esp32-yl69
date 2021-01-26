@@ -8,7 +8,7 @@ This project containes the ESP-IDF driver both for the YL-69 and HL-69 soil mois
 ## How to Use it
 There are few steps to follow for running this component. Take a look at the list below.
 
-1. First of all, clone this repository or download latest release [here]()
+1. First of all, clone this repository or download latest release
 
 2. Set up the esp32-yl69 component into the *requires* of your *CMakeLists.txt*
 ```C
